@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package testrpc;
+
+service TestRPC {
+  rpc OneToOne (Request) returns (Reply) {}
+  rpc OneToStream (Request) returns (stream Reply) {}
+  rpc StreamToOne (stream Request) returns (Reply) {}
+  rpc StreamToStream (stream Request) returns (stream Reply) {}
+}
+
+message Request {
+  bytes msg = 1;
+}
+
+message Reply {
+  bytes msg = 1;
+}
